@@ -32,7 +32,7 @@ ind_lon1, ind_lat1 = transform(outProj,inProj,90,-15)
 ind_lon2, ind_lat2 = transform(outProj,inProj,150,20)
 cartodb = get_provider(CARTODBPOSITRON)
 
-df = data[data.index == '2020-03-01']
+df = data[data.index == '2021-01-01']
 
 nam = []
 for i in df.new_cases:
@@ -49,18 +49,18 @@ source = ColumnDataSource(data={
 mapper = linear_cmap('dat', Spectral6 , 0 , 849875)
 
 
-plot = figure(plot_width = 700, 
-              plot_height = 500,
+plot = figure(plot_width = 1500, 
+              plot_height = 900,
               x_range = (ind_lon1, ind_lon2), 
               y_range = (ind_lat1, ind_lat2),
               x_axis_type = "mercator", 
               y_axis_type = "mercator",
               tooltips = [
-                    ("Provinsi", "@nam"),
-                    ("Jumlah", "@dat"), 
-                    ("Pulau", "@dit")
+                    ("Province", "@nam"),
+                    ("Total", "@dat"), 
+                    ("Island", "@dit")
                     ],
-             title="Covid19 di Indonesia")
+             title="COVID 19 DATA IN INDONESIA 2020-2021")
 
 plot.add_tile(cartodb)
 
@@ -88,7 +88,7 @@ def update_plot(attr, old, new):
     }
 
 dPicker = DatePicker(
-    title = 'Date',
+    title = 'On Date',
     value=dt.datetime(2020, 3, 1).date(),
     min_date= dt.datetime(2020, 3, 1).date(), 
     max_date=dt.datetime(2021, 12, 3).date()
@@ -99,7 +99,7 @@ dPicker.on_change('value', update_plot)
 select = Select(
     options=['total_cases', 'total_deaths', 'total_recovered', 'total_activeCases', 'new_cases', 'new_deaths','new_recovered', 'new_activeCases'],
     value='new_cases',
-    title='pilih data'
+    title='Choose Data Type'
 )
 
 select.on_change('value', update_plot)
