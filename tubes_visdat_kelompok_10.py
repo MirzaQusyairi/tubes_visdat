@@ -89,7 +89,7 @@ def update_plot(attr, old, new):
 
 dPicker = DatePicker(
     title = 'On Date',
-    value=dt.datetime(2020, 3, 1).date(),
+    value=dt.datetime(2021, 1, 1).date(),
     min_date= dt.datetime(2020, 3, 1).date(), 
     max_date=dt.datetime(2021, 12, 3).date()
 )
