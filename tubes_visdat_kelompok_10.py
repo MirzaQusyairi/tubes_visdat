@@ -49,8 +49,8 @@ source = ColumnDataSource(data={
 mapper = linear_cmap('dat', Spectral6 , 0 , 849875)
 
 
-plot = figure(plot_width = 1500, 
-              plot_height = 900,
+plot = figure(plot_width = 1100, 
+              plot_height = 700,
               x_range = (ind_lon1, ind_lon2), 
               y_range = (ind_lat1, ind_lat2),
               x_axis_type = "mercator", 
